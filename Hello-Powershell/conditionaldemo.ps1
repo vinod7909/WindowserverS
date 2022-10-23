@@ -1,7 +1,7 @@
 $servers = @('google.com', 'facebook.com', 'LinkedIn.com', 'Apple.com', 'hgsgxk.com')
 
 
-$servers | foreach-object -Process {($servername in $servers)} {
+$servers.ForEach({
     $servername = $_
     $isServerup = Test-Connection -ComputerName $servername -Quiet -Count 1
     
@@ -11,4 +11,4 @@ $servers | foreach-object -Process {($servername in $servers)} {
     else {
         Write-Output "$servername is down"
     }
-}
+})
